@@ -880,7 +880,7 @@ void MainPS(
 		FLightAccumulator LightAccumulator = (FLightAccumulator)0;
 		LightAccumulator_Add(LightAccumulator, SkyLighting, SkyLighting, 0.2f, false); // Narr Edit -> Sky Light Intensity decrease
 		OutColor.xyz = LightAccumulator_GetResult(LightAccumulator).xyz * SampleCoverage * 0.18f; // Edit by Bami -> Color Luminance decrease
-		OutColor.a = SampleCoverage * 0.18f; // Edit by Bami -> Color Luminance decrease
+		OutColor.a = SampleCoverage * 0.18f; // 2024.04.18 Edit by Bami -> Color Luminance decrease
 	}
 }
 
