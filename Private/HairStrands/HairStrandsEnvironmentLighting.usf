@@ -750,7 +750,8 @@ float3 ReflectionEnvironmentSH(
 	// Sky lighting (already pre-exposed)
 	if (bDynamicSkyLight)
 	{
-		Lighting += SkyLightDiffuse(GBuffer, AmbientOcclusion, BufferUV, ScreenPosition, BentNormal, DiffuseColor);
+		//Lighting = 0;
+		Lighting += SkyLightDiffuse(GBuffer, AmbientOcclusion, BufferUV, ScreenPosition, BentNormal, DiffuseColor) * 0.0f;
 	}
 
 	// Static lighting (already pre-exposed)
@@ -877,9 +878,9 @@ void MainPS(
 		const float SampleCoverage = saturate(From8bitCoverage(Sample.Coverage8bit));
 
 		FLightAccumulator LightAccumulator = (FLightAccumulator)0;
-		LightAccumulator_Add(LightAccumulator, SkyLighting, SkyLighting, 1.0f, false);
-		OutColor.xyz = LightAccumulator_GetResult(LightAccumulator).xyz * SampleCoverage * 0.18f;
-		OutColor.a = SampleCoverage * 0.18f;
+		LightAccumulator_Add(LightAccumulator, SkyLighting, SkyLighting, 0.2f, false); // Narr Edit -> Sky Light Intensity decrease
+		OutColor.xyz = LightAccumulator_GetResult(LightAccumulator).xyz * SampleCoverage * 0.18f; // Edit by Bami -> Color Luminance decrease
+		OutColor.a = SampleCoverage * 0.18f; // Edit by Bami -> Color Luminance decrease
 	}
 }
 
