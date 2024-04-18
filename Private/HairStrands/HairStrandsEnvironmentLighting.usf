@@ -878,8 +878,8 @@ void MainPS(
 
 		FLightAccumulator LightAccumulator = (FLightAccumulator)0;
 		LightAccumulator_Add(LightAccumulator, SkyLighting, SkyLighting, 1.0f, false);
-		OutColor.xyz = LightAccumulator_GetResult(LightAccumulator).xyz * SampleCoverage;
-		OutColor.a = SampleCoverage;
+		OutColor.xyz = LightAccumulator_GetResult(LightAccumulator).xyz * SampleCoverage * 0.18f;
+		OutColor.a = SampleCoverage * 0.18f;
 	}
 }
 
