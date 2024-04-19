@@ -83,7 +83,7 @@ void TraceHairVoxels(
 	// Jitter start position to mask/compensate coarse voxel resolution
 	float3 NormalizedDepthBias = 0;
 	{
-		const float PositionBiasScale = 0.5f;
+		const float PositionBiasScale = 1.0f; // 2024.4.19 Narr Edit : 0.5f -> 1.0f
 		NormalizedDepthBias = (VirtualVoxel.DepthBiasScale_Shadow * SampleDirection + PositionBiasScale * (Random.xyz * 2 - 1));
 	}
 

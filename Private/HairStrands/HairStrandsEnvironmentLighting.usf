@@ -463,7 +463,7 @@ float3 ReflectionEnvironment(FGBufferData GBuffer, float2 ScreenPosition, float2
 		// Select the TRT for remapping the hair roughness onto the GGX based lobe, as it is the 
 		// widest lobe between the R & TRT components
 		const float GGXRoughness = HairToGGXRoughness_TRT(GBuffer.Roughness);
-		ColorR.rgb += View.PreExposure * GatherRadiance(R, GGXRoughness, PixelPosition, PixelSceneDepth, TranslatedWorldPosition);
+		ColorR.rgb += View.PreExposure * GatherRadiance(R, GGXRoughness, PixelPosition, PixelSceneDepth, TranslatedWorldPosition); // need to check by Narr 2024.4.19
 		//ColorR.rgb += View.PreExposure * GetSkySHDiffuse(R) * View.SkyLightColor.rgb * PI;
 
 		const float3 L = R;
